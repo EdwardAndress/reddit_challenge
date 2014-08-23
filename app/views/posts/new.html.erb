@@ -1,0 +1,29 @@
+<%= form_for @post do |f| %>
+
+	<p>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :content %>
+		<%= f.text_field :content %>
+	</p>
+
+	<p>
+		<%= f.submit 'Submit post' %>
+	</p>
+
+<% end %>
+
+<% if @post.errors.any? %>
+	<section id="post-form-errors">
+		<h3><%= pluralize(@post.errors.count, "error") %> prohibited this post from being created: </h3>
+		<ul>
+			<% @post.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+
+	</section>
+<% end %>

@@ -1,0 +1,20 @@
+<%= link_to 'Submit a new text post', new_post_path %>
+<%= link_to 'Submit a new link', new_link_path %>
+
+<% if @posts.any? %>
+	<% @posts.each do |post| %>
+		<article class='post'>
+			<%= link_to '▲',  post_upvotes_path(post) %>
+			<h2 id='title'><%= post.title%></h2>
+			<p id='content'><%= post.content%></p>
+		</article>
+	<% end %>
+<% end %>
+
+<% if @links.any? %>
+	<% @links.each do |link| %>
+		<article class='link'>
+			<h2 id='title'><%= link_to link.title, 'http://' + link.url %></h2>
+		</article>
+	<% end %>
+<% end %>
